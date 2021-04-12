@@ -67,17 +67,23 @@ public class BuildEditor
                     mAllPrefabDict.Add(path, allDependPathList);
             }
         }
-        
+        //文件夹AB包 设置AB包名
         foreach (string key in mAllFileDirDict.Keys)
         {
             SetABName(key, mAllFileDirDict[key]);
         }
-        
+        //Prefab AB包 设置AB包名
         foreach (string key in mAllPrefabDict.Keys)
         {
             SetABName(key, mAllPrefabDict[key]);
         }
-        
+        //清除设置的AB包名,防止.meta文件发生改变
+        string[] oldABNames = AssetDatabase.GetAllAssetBundleNames();
+        for (int i = 0; i < oldABNames.Length; i++)
+        {
+            AssetDatabase.RemoveAssetBundleName(oldABNames[i], true);
+            EditorUtility.DisplayProgressBar("清除AB包名", "AB包名:" + oldABNames[i], i * 1.0f / oldABNames.Length);
+        }
         
         EditorUtility.ClearProgressBar();
 
