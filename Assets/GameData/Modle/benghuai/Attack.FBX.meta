@@ -201,5 +201,5 @@ ModelImporter:
   avatarSetup: 1
   additionalBone: 0
   userData: 
-  assetBundleName: assets/gamedata/prefabs/attack.prefab
+  assetBundleName: attack
   assetBundleVariant: 
